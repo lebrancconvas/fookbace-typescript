@@ -32,12 +32,12 @@ export class User {
     return this._fullName;
   }
 
-  addFriend(friendUsername: string) {
-    if(this._friends.find(friend => friend._username === friendUsername)) {
-      throw new Error(`${friendUsername} is already in the friend list`);
+  addFriend(friend: User) {
+    if(this._friends.find(friend => friend._username === friend._username)) {
+      throw new Error(`${friend._username} is already in the friend list`);
     }
 
-    this._friends.push(new User(friendUsername));
+    this._friends.push(friend);
   }
 
   viewFriendList() {
