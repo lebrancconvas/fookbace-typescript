@@ -48,28 +48,28 @@ export class User {
     return this._friendRequests;
   }
 
-  acceptFriendRequest(friendUsername: string) {
+  acceptFriendRequest(friendRequest: User) {
     if(this._friendRequests.length === 0) {
       throw new Error(`You don't have any friend request`);
     }
 
-    if(!this._friendRequests.find(friend => friend._username === friendUsername)) {
-      throw new Error(`You don't have friend request from ${friendUsername}`);
+    if(!this._friendRequests.find(friend => friend._username === friend._username)) {
+      throw new Error(`You don't have friend request from ${friendRequest._username}`);
     }
 
-    this._friends.push(new User(friendUsername));
+    this._friends.push(friendRequest);
   }
 
-  declineFriendRequest(friendUsername: string) {
+  declineFriendRequest(friendRequest: User) {
     if(this._friendRequests.length === 0) {
       throw new Error(`You don't have any friend request`);
     }
 
-    if(!this._friendRequests.find(friend => friend._username === friendUsername)) {
-      throw new Error(`You don't have friend request from ${friendUsername}`);
+    if(!this._friendRequests.find(friend => friend._username === friend._username)) {
+      throw new Error(`You don't have friend request from ${friendRequest._username}`);
     }
 
-    this._friendRequests = this._friendRequests.filter(friend => friend._username !== friendUsername);
+    this._friendRequests = this._friendRequests.filter(friend => friend._username !== friendRequest._username);
   }
 
   unfriend(friendUsername: string) {
