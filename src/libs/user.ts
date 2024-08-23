@@ -84,8 +84,8 @@ export class User {
     this._friends = this._friends.filter(friend => friend._username !== friend._username);
   };
 
-  viewAllPost(friendUsername?: string) {
-    if(!friendUsername) {
+  viewAllPost(friend?: User) {
+    if(!friend) {
       return this._posts;
     }
 
@@ -93,11 +93,11 @@ export class User {
       throw new Error(`You don't have any friend`);
     }
 
-    if(!this._friends.find(friend => friend._username === friendUsername)) {
-      throw new Error(`You don't have friend with ${friendUsername}`);
+    if(!this._friends.find(friend => friend._username === friend._username)) {
+      throw new Error(`You don't have friend with ${friend._username}`);
     }
 
-    let friendTarget = this._friends.find(friend => friend._username === friendUsername);
+    let friendTarget = this._friends.find(friend => friend._username === friend._username);
 
     if(typeof friendTarget === 'object') {
       return friendTarget._posts;
