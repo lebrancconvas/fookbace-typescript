@@ -109,6 +109,7 @@ export class User {
   createPost(postContent: string) {
     if(!postContent) {
       this._posts.push(new Post(''));
+      return;
     }
 
     this._posts.push(new Post(postContent));
