@@ -113,4 +113,12 @@ export class User {
 
     this._posts.push(new Post(postContent));
   };
+
+  searchPostByKeyword(keyword: string) {
+    if(!keyword) {
+      return this._posts;
+    }
+
+    return this._posts.filter(post => post.content.includes(keyword));
+  };
 };

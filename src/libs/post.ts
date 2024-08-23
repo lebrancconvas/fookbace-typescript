@@ -16,4 +16,8 @@ export class Post {
     this._like = 0;
     this._comments = [];
   }
+
+  get content() {
+    return this._content;
+  }
 };
