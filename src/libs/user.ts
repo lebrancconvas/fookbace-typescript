@@ -72,16 +72,16 @@ export class User {
     this._friendRequests = this._friendRequests.filter(friend => friend._username !== friendRequest._username);
   }
 
-  unfriend(friendUsername: string) {
+  unfriend(friend: User) {
     if(this._friends.length === 0) {
       throw new Error(`You don't have any friend`);
     }
 
-    if(!this._friends.find(friend => friend._username === friendUsername)) {
-      throw new Error(`You don't have friend with ${friendUsername}`);
+    if(!this._friends.find(friend => friend._username === friend._username)) {
+      throw new Error(`You don't have friend with ${friend._username}`);
     }
 
-    this._friends = this._friends.filter(friend => friend._username !== friendUsername);
+    this._friends = this._friends.filter(friend => friend._username !== friend._username);
   };
 
   viewAllPost(friendUsername?: string) {
